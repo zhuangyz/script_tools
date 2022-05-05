@@ -86,7 +86,7 @@ fi
 cd $sh_path
 echo ""
 echo "下载完整微信SDK"
-wxsdk_url="https://res.wx.qq.com/op_res/DHI055JVxYur-5c7ss5McQZj2Y9KZQlp24xwD7FYnF88x8LA8rWCzSfdStN5tiCD"
+wxsdk_url="https://res.wx.qq.com/op_res/XP2S6Df6fFmoNCdbbD14fbkHfjxvl3Q4lw61HkI79tjBQjppRTgJSmJ1cYKIXZdQh9IeX2xXCWX7AqnzuWfUvw"
 wxsdk_dir="WechatOpenSDK"
 wxsdk_download_cmd="wget -O $wxsdk_dir.zip $wxsdk_url"
 echo "执行命令 $wxsdk_download_cmd"
@@ -108,23 +108,23 @@ fi
 rm -f "$wxsdk_dir.zip"
 # 获取SDK里所需的.a和.h文件 的路径
 cd $wxsdk_dir
-sdk_files_dir=""
-for dir in $(ls)
-do
-  if [[ $dir =~ "OpenSDK" ]];
-  then
-    cd "$dir"
-    sdk_files_dir="$(pwd)"
-    break
-  fi
-done
-
-echo $sdk_files_dir
-if [ -z $sdk_files_dir ]
-then
-  echo "$sdk_files_dir 不存在"
-  exit 1
-fi
+sdk_files_dir=$wxsdk_dir
+# for dir in $(ls)
+# do
+#   if [[ $dir =~ "OpenSDK" ]];
+#   then
+#     cd "$dir"
+#     sdk_files_dir="$(pwd)"
+#     break
+#   fi
+# done
+#
+# echo $sdk_files_dir
+# if [ -z $sdk_files_dir ]
+# then
+#   echo "$sdk_files_dir 不存在"
+#   exit 1
+# fi
 
 # 替换 pod 中的微信SDK
 echo ""
